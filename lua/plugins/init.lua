@@ -40,7 +40,24 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		opts = {
-			ensure_installed = { "html", "css", "bash" },
+			ensure_installed = {
+				"html",
+				"css",
+				"bash",
+				"javascript",
+				"typescript",
+				"c",
+				"cpp",
+				"rust",
+				"python",
+				"cmake",
+				"gitignore",
+				"json",
+				"json5",
+				"lua",
+				"yaml",
+				"toml",
+			},
 		},
 	},
 	-- In order to modify the `lspconfig` configuration:
