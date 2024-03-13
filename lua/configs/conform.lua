@@ -9,6 +9,7 @@ local options = {
 		c = { "clang_format" },
 		cpp = { "clang_format" },
 		cmake = { "cmake_format" },
+        rust = {"rustfmt"}
 	},
 }
 
