@@ -1,0 +1,72 @@
+-- return {
+--     {
+--         "mfussenegger/nvim-dap",
+--         config = function()
+--             local dap = require("dap")
+
+--             -- ======================
+--             -- Python Adapter (must exist before configurations)
+--             -- ======================
+--             dap.adapters.python = function(cb, _)
+--                 local cwd = vim.fn.getcwd()
+--                 local python_path = nil
+
+--                 if vim.fn.executable(cwd .. "\\venv\\Scripts\\python.exe") == 1 then
+--                     python_path = cwd .. "\\venv\\Scripts\\python.exe"
+--                 elseif vim.fn.executable(cwd .. "\\.venv\\Scripts\\python.exe") == 1 then
+--                     python_path = cwd .. "\\.venv\\Scripts\\python.exe"
+--                 else
+--                     python_path = "python" -- fallback
+--                 end
+
+--                 cb({
+--                     type = "executable",
+--                     command = python_path,
+--                     args = { "-m", "debugpy.adapter" },
+--                     options = { source_filetype = "python" },
+--                 })
+--             end
+
+--             -- ======================
+--             -- Python Configurations
+--             -- ======================
+--             dap.configurations.python = {
+--                 {
+--                     type = "python", -- must match dap.adapters.python
+--                     request = "launch",
+--                     name = "Launch file",
+--                     program = "${file}",
+--                     pythonPath = function()
+--                         local cwd = vim.fn.getcwd()
+--                         if vim.fn.executable(cwd .. "\\venv\\Scripts\\python.exe") == 1 then
+--                             return cwd .. "\\venv\\Scripts\\python.exe"
+--                         elseif vim.fn.executable(cwd .. "\\.venv\\Scripts\\python.exe") == 1 then
+--                             return cwd .. "\\.venv\\Scripts\\python.exe"
+--                         else
+--                             return "python"
+--                         end
+--                     end,
+--                 },
+--             }
+--         end,
+--     },
+
+--     {
+--         "rcarriga/nvim-dap-ui",
+--         dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+--         config = function()
+--             local dap, dapui = require("dap"), require("dapui")
+--             dapui.setup()
+
+--             dap.listeners.after.event_initialized["dapui_config"] = function()
+--                 dapui.open()
+--             end
+--             dap.listeners.before.event_terminated["dapui_config"] = function()
+--                 dapui.close()
+--             end
+--             dap.listeners.before.event_exited["dapui_config"] = function()
+--                 dapui.close()
+--             end
+--         end,
+--     },
+-- }
