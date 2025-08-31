@@ -43,11 +43,9 @@ return {
 
 
   {
-    "mfussenegger/nvim-dap-python",
-    dependencies = { "mfussenegger/nvim-dap" },
+    "mfussenegger/nvim-dap",
     config = function()
-      require("dap-python").setup(
-        "C:/Users/karti/Documents/Vectoflow/CodesVF/02-VectoCalibrations/VectoCalibration/venv/Scripts/python.exe")
+      require("configs.dap-python").setup() -- just load your python setup
     end,
   },
 
